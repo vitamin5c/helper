@@ -14,7 +14,7 @@ public interface HealthInfoMapper {
      * @param healthInfo 健康信息实体
      * @return 插入成功的记录数
      */
-    @Insert("INSERT INTO health_info (description, record_date) VALUES (#{description}, #{recordDate})")
+    @Insert("INSERT INTO health_info (description, record_date, status) VALUES (#{description}, #{recordDate}, #{status})")
     @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
     int insert(HealthInfo healthInfo);
 
@@ -31,7 +31,7 @@ public interface HealthInfoMapper {
      * @param healthInfo 健康信息实体
      * @return 更新成功的记录数
      */
-    @Update("UPDATE health_info SET description = #{description}, record_date = #{recordDate} WHERE id = #{id}")
+    @Update("UPDATE health_info SET description = #{description}, record_date = #{recordDate}, status = #{status} WHERE id = #{id}")
     int update(HealthInfo healthInfo);
 
     /**
@@ -44,9 +44,11 @@ public interface HealthInfoMapper {
 
     /**
      * 查询指定日期之后的健康信息记录
+     *
      * @param dateTime 日期时间
+     * @param status
      * @return 健康信息记录列表
      */
     @Select("SELECT * FROM health_info WHERE record_date >= #{dateTime}")
-    List<HealthInfo> list(LocalDateTime dateTime);
+    List<HealthInfo> list(LocalDateTime dateTime, Integer status);
 }

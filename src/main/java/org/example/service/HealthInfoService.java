@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 @Service
 public interface HealthInfoService {
-    PageResult<HealthInfo> page(LocalDateTime dateTime, Integer page, Integer pageSize);
+    PageResult<HealthInfo> page(LocalDateTime dateTime, Integer status, Integer page, Integer pageSize);
 
     void add(HealthInfo healthInfo);
 

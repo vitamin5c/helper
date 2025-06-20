@@ -2,7 +2,6 @@ package org.example.service.Impl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import org.example.bean.ExpenseRecord;
 import org.example.bean.HealthInfo;
 import org.example.bean.PageResult;
 import org.example.mapper.HealthInfoMapper;
@@ -40,12 +39,12 @@ public class HealthInfoServiceImpl implements HealthInfoService {
     }
 
     @Override
-    public PageResult<HealthInfo> page(LocalDateTime dateTime, Integer page, Integer pageSize) {
+    public PageResult<HealthInfo> page(LocalDateTime dateTime, Integer status, Integer page, Integer pageSize) {
         //1. 设置分页参数
         PageHelper.startPage(page, pageSize);
 
         //2. 执行查询
-        List<HealthInfo>  healthInfosList = healthInfoMapper.list(dateTime);
+        List<HealthInfo>  healthInfosList = healthInfoMapper.list(dateTime, status);
         Page<HealthInfo> p = (Page<HealthInfo>) healthInfosList;
 
         //3. 封装结果

@@ -26,10 +26,11 @@ public class HealthInfoController {
     @GetMapping("/list")
     public Result list(
             @RequestParam(required = false) LocalDateTime dateTime,
+            @RequestParam(required = false) Integer status,
             @RequestParam(defaultValue = "1") Integer page,
             @RequestParam(defaultValue = "10") Integer pageSize
     ) {
-        PageResult<HealthInfo> pageResult = healthInfoService.page(dateTime, page, pageSize);
+        PageResult<HealthInfo> pageResult = healthInfoService.page(dateTime, status, page, pageSize);
         return Result.success(pageResult);
     }
 
