@@ -19,11 +19,10 @@ public class ExpenseRecordController {
 
     /**
      * 分页查询收支记录
-     * @param amount
-     * @param category
-     * @param dateTime
-     * @param page 页码
-     * @param pageSize 每页记录数
+     * @param maxAmount  最大金额
+     * @param minAmount 最小金额
+     * @param category  收支类别
+     * @param dateTime  收支日期
      * @return 分页结果
      */
     @GetMapping("/list")
