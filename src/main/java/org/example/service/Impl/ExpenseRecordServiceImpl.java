@@ -39,6 +39,9 @@ public class ExpenseRecordServiceImpl implements ExpenseRecordService {
 
     @Override
     public void deleteById(Integer id) {
+        if (id == null) {
+            throw new NullPointerException("ID cannot be null");
+        }
         expenseRecordMapper.deleteById(id);
     }
 

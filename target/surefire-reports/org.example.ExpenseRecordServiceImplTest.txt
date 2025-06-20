@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: org.example.ExpenseRecordServiceImplTest
 -------------------------------------------------------------------------------
-Tests run: 25, Failures: 2, Errors: 4, Skipped: 0, Time elapsed: 1.705 s <<< FAILURE! -- in org.example.ExpenseRecordServiceImplTest
-org.example.ExpenseRecordServiceImplTest.page_nullCategory -- Time elapsed: 0.036 s <<< ERROR!
+Tests run: 25, Failures: 2, Errors: 4, Skipped: 0, Time elapsed: 12.55 s <<< FAILURE! -- in org.example.ExpenseRecordServiceImplTest
+org.example.ExpenseRecordServiceImplTest.page_nullCategory -- Time elapsed: 0.438 s <<< ERROR!
 java.lang.ClassCastException: class java.util.ImmutableCollections$ListN cannot be cast to class com.github.pagehelper.Page (java.util.ImmutableCollections$ListN is in module java.base of loader 'bootstrap'; com.github.pagehelper.Page is in unnamed module of loader 'app')
 	at org.example.service.Impl.ExpenseRecordServiceImpl.page(ExpenseRecordServiceImpl.java:29)
 	at org.example.ExpenseRecordServiceImplTest.page_nullCategory(ExpenseRecordServiceImplTest.java:71)
@@ -10,7 +10,7 @@ java.lang.ClassCastException: class java.util.ImmutableCollections$ListN cannot 
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-org.example.ExpenseRecordServiceImplTest.page_emptyResult -- Time elapsed: 0.003 s <<< ERROR!
+org.example.ExpenseRecordServiceImplTest.page_emptyResult -- Time elapsed: 0.020 s <<< ERROR!
 java.lang.ClassCastException: class java.util.LinkedList cannot be cast to class com.github.pagehelper.Page (java.util.LinkedList is in module java.base of loader 'bootstrap'; com.github.pagehelper.Page is in unnamed module of loader 'app')
 	at org.example.service.Impl.ExpenseRecordServiceImpl.page(ExpenseRecordServiceImpl.java:29)
 	at org.example.ExpenseRecordServiceImplTest.page_emptyResult(ExpenseRecordServiceImplTest.java:50)
@@ -18,7 +18,7 @@ java.lang.ClassCastException: class java.util.LinkedList cannot be cast to class
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-org.example.ExpenseRecordServiceImplTest.delete_nullId -- Time elapsed: 0.003 s <<< FAILURE!
+org.example.ExpenseRecordServiceImplTest.delete_nullId -- Time elapsed: 0.021 s <<< FAILURE!
 org.opentest4j.AssertionFailedError: Expected java.lang.NullPointerException to be thrown, but nothing was thrown.
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:152)
 	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:73)
@@ -29,7 +29,7 @@ org.opentest4j.AssertionFailedError: Expected java.lang.NullPointerException to 
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-org.example.ExpenseRecordServiceImplTest.page_boundaryMinMax -- Time elapsed: 0.002 s <<< ERROR!
+org.example.ExpenseRecordServiceImplTest.page_boundaryMinMax -- Time elapsed: 0.012 s <<< ERROR!
 java.lang.ClassCastException: class java.util.LinkedList cannot be cast to class com.github.pagehelper.Page (java.util.LinkedList is in module java.base of loader 'bootstrap'; com.github.pagehelper.Page is in unnamed module of loader 'app')
 	at org.example.service.Impl.ExpenseRecordServiceImpl.page(ExpenseRecordServiceImpl.java:29)
 	at org.example.ExpenseRecordServiceImplTest.page_boundaryMinMax(ExpenseRecordServiceImplTest.java:58)
@@ -37,7 +37,7 @@ java.lang.ClassCastException: class java.util.LinkedList cannot be cast to class
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-org.example.ExpenseRecordServiceImplTest.page_validRange -- Time elapsed: 0.003 s <<< ERROR!
+org.example.ExpenseRecordServiceImplTest.page_validRange -- Time elapsed: 0.015 s <<< ERROR!
 java.lang.ClassCastException: class java.util.LinkedList cannot be cast to class com.github.pagehelper.Page (java.util.LinkedList is in module java.base of loader 'bootstrap'; com.github.pagehelper.Page is in unnamed module of loader 'app')
 	at org.example.service.Impl.ExpenseRecordServiceImpl.page(ExpenseRecordServiceImpl.java:29)
 	at org.example.ExpenseRecordServiceImplTest.page_validRange(ExpenseRecordServiceImplTest.java:42)
@@ -45,7 +45,7 @@ java.lang.ClassCastException: class java.util.LinkedList cannot be cast to class
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 
-org.example.ExpenseRecordServiceImplTest.page_invalidPageSizeZero -- Time elapsed: 0.004 s <<< FAILURE!
+org.example.ExpenseRecordServiceImplTest.page_invalidPageSizeZero -- Time elapsed: 0.016 s <<< FAILURE!
 org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.lang.ArithmeticException> but was: <java.lang.ClassCastException>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:67)

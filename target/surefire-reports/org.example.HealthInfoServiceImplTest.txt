@@ -1,0 +1,97 @@
+-------------------------------------------------------------------------------
+Test set: org.example.HealthInfoServiceImplTest
+-------------------------------------------------------------------------------
+Tests run: 25, Failures: 4, Errors: 4, Skipped: 0, Time elapsed: 0.210 s <<< FAILURE! -- in org.example.HealthInfoServiceImplTest
+org.example.HealthInfoServiceImplTest.page_futureDateTime -- Time elapsed: 0.107 s <<< ERROR!
+java.lang.ClassCastException: class java.util.ImmutableCollections$List12 cannot be cast to class com.github.pagehelper.Page (java.util.ImmutableCollections$List12 is in module java.base of loader 'bootstrap'; com.github.pagehelper.Page is in unnamed module of loader 'app')
+	at org.example.service.Impl.HealthInfoServiceImpl.page(HealthInfoServiceImpl.java:49)
+	at org.example.HealthInfoServiceImplTest.page_futureDateTime(HealthInfoServiceImplTest.java:194)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+org.example.HealthInfoServiceImplTest.add_validHealthInfo -- Time elapsed: 0.012 s <<< ERROR!
+org.mockito.exceptions.base.MockitoException: 
+
+Only void methods can doNothing()!
+Example of correct use of doNothing():
+    doNothing().
+    doThrow(new RuntimeException())
+    .when(mock).someVoidMethod();
+Above means:
+someVoidMethod() does nothing the 1st time but throws an exception the 2nd time is called
+	at org.example.HealthInfoServiceImplTest.add_validHealthInfo(HealthInfoServiceImplTest.java:37)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+org.example.HealthInfoServiceImplTest.page_validRequest -- Time elapsed: 0.004 s <<< ERROR!
+java.lang.ClassCastException: class java.util.ImmutableCollections$List12 cannot be cast to class com.github.pagehelper.Page (java.util.ImmutableCollections$List12 is in module java.base of loader 'bootstrap'; com.github.pagehelper.Page is in unnamed module of loader 'app')
+	at org.example.service.Impl.HealthInfoServiceImpl.page(HealthInfoServiceImpl.java:49)
+	at org.example.HealthInfoServiceImplTest.page_validRequest(HealthInfoServiceImplTest.java:170)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+org.example.HealthInfoServiceImplTest.page_invalidPageZero -- Time elapsed: 0.006 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.lang.ArithmeticException> but was: <java.lang.ClassCastException>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:67)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3128)
+	at org.example.HealthInfoServiceImplTest.page_invalidPageZero(HealthInfoServiceImplTest.java:183)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+Caused by: java.lang.ClassCastException: class java.util.LinkedList cannot be cast to class com.github.pagehelper.Page (java.util.LinkedList is in module java.base of loader 'bootstrap'; com.github.pagehelper.Page is in unnamed module of loader 'app')
+	at org.example.service.Impl.HealthInfoServiceImpl.page(HealthInfoServiceImpl.java:49)
+	at org.example.HealthInfoServiceImplTest.lambda$page_invalidPageZero$2(HealthInfoServiceImplTest.java:183)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)
+	... 6 more
+
+org.example.HealthInfoServiceImplTest.page_emptyResult -- Time elapsed: 0.002 s <<< ERROR!
+java.lang.ClassCastException: class java.util.Collections$EmptyList cannot be cast to class com.github.pagehelper.Page (java.util.Collections$EmptyList is in module java.base of loader 'bootstrap'; com.github.pagehelper.Page is in unnamed module of loader 'app')
+	at org.example.service.Impl.HealthInfoServiceImpl.page(HealthInfoServiceImpl.java:49)
+	at org.example.HealthInfoServiceImplTest.page_emptyResult(HealthInfoServiceImplTest.java:177)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+org.example.HealthInfoServiceImplTest.delete_nullId -- Time elapsed: 0.003 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: Expected java.lang.NullPointerException to be thrown, but nothing was thrown.
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:152)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:73)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3128)
+	at org.example.HealthInfoServiceImplTest.delete_nullId(HealthInfoServiceImplTest.java:97)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+org.example.HealthInfoServiceImplTest.get_nullId -- Time elapsed: 0.003 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: Expected java.lang.NullPointerException to be thrown, but nothing was thrown.
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:152)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:73)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3128)
+	at org.example.HealthInfoServiceImplTest.get_nullId(HealthInfoServiceImplTest.java:163)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+org.example.HealthInfoServiceImplTest.page_invalidPageSizeZero -- Time elapsed: 0.006 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.lang.ArithmeticException> but was: <java.lang.ClassCastException>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:67)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3128)
+	at org.example.HealthInfoServiceImplTest.page_invalidPageSizeZero(HealthInfoServiceImplTest.java:188)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+Caused by: java.lang.ClassCastException: class java.util.LinkedList cannot be cast to class com.github.pagehelper.Page (java.util.LinkedList is in module java.base of loader 'bootstrap'; com.github.pagehelper.Page is in unnamed module of loader 'app')
+	at org.example.service.Impl.HealthInfoServiceImpl.page(HealthInfoServiceImpl.java:49)
+	at org.example.HealthInfoServiceImplTest.lambda$page_invalidPageSizeZero$3(HealthInfoServiceImplTest.java:188)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)
+	... 6 more
+
