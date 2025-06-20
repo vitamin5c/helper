@@ -1,9 +1,9 @@
-package org.example.service.Impl;
+package org.example;
 
-import com.github.pagehelper.PageHelper;
 import org.example.bean.ExpenseRecord;
 import org.example.bean.PageResult;
 import org.example.mapper.ExpenseRecordMapper;
+import org.example.service.Impl.ExpenseRecordServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.*;
@@ -37,7 +37,7 @@ class ExpenseRecordServiceImplTest {
     // ---------- Test: page() ----------
     @Test
     void page_validRange() {
-        when(mapper.list(10, "Food", LocalDate.of(2024, 6, 20)))
+        when(mapper.list(100, 10, "Food", LocalDate.of(2024, 6, 20)))
                 .thenReturn(Collections.singletonList(record));
         PageResult<ExpenseRecord> result = service.page(10, 100, "Food", LocalDate.of(2024, 6, 20), 1, 10);
         assertEquals(1, result.getRows().size());
@@ -45,7 +45,7 @@ class ExpenseRecordServiceImplTest {
 
     @Test
     void page_emptyResult() {
-        when(mapper.list(10, "Travel", LocalDate.of(2024, 1, 1)))
+        when(mapper.list(100, 10, "Travel", LocalDate.of(2024, 1, 1)))
                 .thenReturn(Collections.emptyList());
         PageResult<ExpenseRecord> result = service.page(10, 100, "Travel", LocalDate.of(2024, 1, 1), 1, 10);
         assertTrue(result.getRows().isEmpty());
@@ -53,7 +53,7 @@ class ExpenseRecordServiceImplTest {
 
     @Test
     void page_boundaryMinMax() {
-        when(mapper.list(0, "Food", LocalDate.now()))
+        when(mapper.list(100, 0, "Food", LocalDate.now()))
                 .thenReturn(Arrays.asList(record, record));
         PageResult<ExpenseRecord> result = service.page(0, 0, "Food", LocalDate.now(), 1, 2);
         assertEquals(2, result.getRows().size());
@@ -67,8 +67,8 @@ class ExpenseRecordServiceImplTest {
 
     @Test
     void page_nullCategory() {
-        when(mapper.list(50, null, LocalDate.now())).thenReturn(List.of());
-        PageResult<ExpenseRecord> result = service.page(50, null, LocalDate.now(), 1, 10);
+        when(mapper.list(100, 50, null, LocalDate.now())).thenReturn(List.of());
+        PageResult<ExpenseRecord> result = service.page(100, 50, null, LocalDate.now(), 1, 10);
         assertTrue(result.getRows().isEmpty());
     }
 

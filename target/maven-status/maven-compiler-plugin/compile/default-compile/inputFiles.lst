@@ -1,0 +1,15 @@
+/Users/kalenitid/IdeaProjects/helper/src/main/java/org/example/SpringbootMybatisDemoApplication.java
+/Users/kalenitid/IdeaProjects/helper/src/main/java/org/example/bean/ExpenseRecord.java
+/Users/kalenitid/IdeaProjects/helper/src/main/java/org/example/bean/HealthInfo.java
+/Users/kalenitid/IdeaProjects/helper/src/main/java/org/example/bean/PageResult.java
+/Users/kalenitid/IdeaProjects/helper/src/main/java/org/example/bean/Result.java
+/Users/kalenitid/IdeaProjects/helper/src/main/java/org/example/bean/User.java
+/Users/kalenitid/IdeaProjects/helper/src/main/java/org/example/controller/ExpenseRecordController.java
+/Users/kalenitid/IdeaProjects/helper/src/main/java/org/example/controller/HealthInfoController.java
+/Users/kalenitid/IdeaProjects/helper/src/main/java/org/example/mapper/ExpenseRecordMapper.java
+/Users/kalenitid/IdeaProjects/helper/src/main/java/org/example/mapper/HealthInfoMapper.java
+/Users/kalenitid/IdeaProjects/helper/src/main/java/org/example/mapper/UserMapper.java
+/Users/kalenitid/IdeaProjects/helper/src/main/java/org/example/service/ExpenseRecordService.java
+/Users/kalenitid/IdeaProjects/helper/src/main/java/org/example/service/HealthInfoService.java
+/Users/kalenitid/IdeaProjects/helper/src/main/java/org/example/service/Impl/ExpenseRecordServiceImpl.java
+/Users/kalenitid/IdeaProjects/helper/src/main/java/org/example/service/Impl/HealthInfoServiceImpl.java
