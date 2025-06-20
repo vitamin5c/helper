@@ -12,13 +12,14 @@ public interface ExpenseRecordMapper {
 
     /**
      * 分页查询收支记录
-     * @param amount
+     * @param maxAmount
+     * @param minAmount
      * @param category
      * @param dateTime
      * @return
      */
-    @Select("SELECT * FROM expense_record WHERE amount = #{amount} AND category = #{category} AND date_time = #{dateTime}")
-    List<ExpenseRecord> list(Integer amount, String category, LocalDate dateTime);
+
+    List<ExpenseRecord> list(Integer maxAmount, Integer minAmount, String category, LocalDate dateTime);
 
     /**
      * 添加收支记录

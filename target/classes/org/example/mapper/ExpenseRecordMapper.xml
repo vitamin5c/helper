@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+        <!--定义Mapper映射文件的约束和基本结构-->
+        <!DOCTYPE mapper
+                PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.mapper.ExpenseRecordMapper">
+
+
+    <select id="list" resultType="org.example.bean.ExpenseRecord">
+        select * from expense_record
+        <where>
+            <if test="category != null and category != ''">
+                and category = #{category}
+            </if>
+            <if test="dateTime!= null and dateTime!= ''">
+                and date_time = #{dateTime}
+            </if>
+            <if test="maxAmount!= null and minAmount!= null">
+                and amount between #{minAmount} and #{maxAmount}
+           </if>
+        </where>    
+    </select>
+</mapper>

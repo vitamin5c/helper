@@ -28,13 +28,14 @@ public class ExpenseRecordController {
      */
     @GetMapping("/list")
     public Result list(
-            @RequestParam(required = false) Integer amount,
+            @RequestParam(required = false) Integer maxAmount,
+            @RequestParam(required = false) Integer minAmount,
             @RequestParam(required = false) String category,
             @RequestParam(required = false) LocalDate dateTime,
             @RequestParam(defaultValue = "1") Integer page,
             @RequestParam(defaultValue = "10") Integer pageSize
     ) {
-        PageResult<ExpenseRecord> pageResult = expenseRecordService.page(amount, category, dateTime, page, pageSize);
+        PageResult<ExpenseRecord> pageResult = expenseRecordService.page(maxAmount, minAmount, category, dateTime, page, pageSize);
         return Result.success(pageResult);
     }
 

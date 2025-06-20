@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 @Service
 public interface ExpenseRecordService {
-    PageResult<ExpenseRecord> page(Integer amount, String keyword, LocalDate dateTime, Integer page, Integer pageSize);
+    PageResult<ExpenseRecord> page(Integer maxAmount, Integer minAmount ,String keyword, LocalDate dateTime, Integer page, Integer pageSize);
 
 
     void add(ExpenseRecord expenseRecord);

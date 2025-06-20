@@ -20,12 +20,12 @@ public class ExpenseRecordServiceImpl implements ExpenseRecordService {
     private ExpenseRecordMapper expenseRecordMapper;
 
     @Override
-    public PageResult<ExpenseRecord> page(Integer amount, String catagory, LocalDate dateTime, Integer page, Integer pageSize) {
+    public PageResult<ExpenseRecord> page(Integer maxAmount, Integer minAmount, String catagory, LocalDate dateTime, Integer page, Integer pageSize) {
         //1. 设置分页参数
         PageHelper.startPage(page, pageSize);
 
         //2. 执行查询
-        List<ExpenseRecord> commodityList = expenseRecordMapper.list(amount, catagory, dateTime);
+        List<ExpenseRecord> commodityList = expenseRecordMapper.list(maxAmount, minAmount, catagory, dateTime);
         Page<ExpenseRecord> p = (Page<ExpenseRecord>) commodityList;
 
         //3. 封装结果
