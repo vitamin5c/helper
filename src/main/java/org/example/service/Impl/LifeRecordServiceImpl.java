@@ -27,7 +27,10 @@ public class LifeRecordServiceImpl implements LifeRecordService {
         Page<LifeRecord> p = (Page<LifeRecord>) lifeRecordsList;
 
         //3. 封装结果
-        return new PageResult<>(p.getTotal(), p.getResult());
+        PageResult<LifeRecord> pageResult = new PageResult<>();
+        pageResult.setTotal(p.getTotal());
+        pageResult.setRows(p.getResult());
+        return pageResult;
     }
 
     @Override

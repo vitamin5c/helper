@@ -29,7 +29,10 @@ public class ExpenseRecordServiceImpl implements ExpenseRecordService {
         Page<ExpenseRecord> p = (Page<ExpenseRecord>) commodityList;
 
         //3. 封装结果
-        return new PageResult<>(p.getTotal(), p.getResult());
+        PageResult<ExpenseRecord> pageResult = new PageResult<>();
+        pageResult.setTotal(p.getTotal());
+        pageResult.setRows(p.getResult());
+        return pageResult;
     }
 
     @Override

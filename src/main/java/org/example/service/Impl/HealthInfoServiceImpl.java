@@ -48,6 +48,9 @@ public class HealthInfoServiceImpl implements HealthInfoService {
         Page<HealthInfo> p = (Page<HealthInfo>) healthInfosList;
 
         //3. 封装结果
-        return new PageResult<>(p.getTotal(), p.getResult());
+        PageResult<HealthInfo> pageResult = new PageResult<>();
+        pageResult.setTotal(p.getTotal());
+        pageResult.setRows(p.getResult());
+        return pageResult;
     }
 }
