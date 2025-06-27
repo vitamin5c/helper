@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--定义Mapper映射文件的约束和基本结构-->
+<!DOCTYPE mapper
+                PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.mapper.CalorieRecordMapper">
+
+    <select id="list" resultType="org.example.bean.CalorieRecord">
+        select * from calorie_record
+        <where>
+            <if test="foodName != null and foodName != ''">
+                and food_name like concat('%', #{foodName}, '%')
+            </if>
+            <if test="mealType != null and mealType != ''">
+                and meal_type = #{mealType}
+            </if>
+            <if test="recordDate != null">
+                and record_date = #{recordDate}
+            </if>
+        </where>
+        order by record_date desc, id desc
+    </select>
+
+</mapper>
