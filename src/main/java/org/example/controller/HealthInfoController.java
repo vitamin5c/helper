@@ -7,8 +7,6 @@ import org.example.service.HealthInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
-
 @RestController
 @RequestMapping("/health")
 public class HealthInfoController {
@@ -17,20 +15,21 @@ public class HealthInfoController {
     private HealthInfoService healthInfoService;
 
     /**
-     * 分页查询健康信息记录
-     * @param dateTime 搜索关键词
+     * 分页查询健康信息
+     * @param recordDate 记录日期
+     * @param status 状态
      * @param page 页码
      * @param pageSize 每页记录数
      * @return 分页结果
      */
     @GetMapping("/list")
     public Result list(
-            @RequestParam(required = false) LocalDateTime dateTime,
+            @RequestParam(required = false) String recordDate,
             @RequestParam(required = false) Integer status,
             @RequestParam(defaultValue = "1") Integer page,
             @RequestParam(defaultValue = "10") Integer pageSize
     ) {
-        PageResult<HealthInfo> pageResult = healthInfoService.page(dateTime, status, page, pageSize);
+        PageResult<HealthInfo> pageResult = healthInfoService.page(recordDate, status, page, pageSize);
         return Result.success(pageResult);
     }
 

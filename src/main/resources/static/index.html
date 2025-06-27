@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Life Management System</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .sidebar {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .nav-link {
+            color: rgba(255, 255, 255, 0.8) !important;
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: white !important;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+        }
+        .card {
+            border: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+        }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+        }
+        .table th {
+            background-color: #f8f9fa;
+            border-top: none;
+        }
+        .fade-enter-active, .fade-leave-active {
+            transition: opacity 0.3s ease;
+        }
+        .fade-enter-from, .fade-leave-to {
+            opacity: 0;
+        }
+        .loading {
+            text-align: center;
+            padding: 2rem;
+        }
+        .spinner-border {
+            color: #667eea;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Sidebar -->
+                <nav class="col-md-3 col-lg-2 d-md-block sidebar collapse">
+                    <div class="position-sticky pt-3">
+                        <div class="text-center mb-4">
+                            <h4><i class="fas fa-heart"></i> Life Manager</h4>
+                        </div>
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" :class="{active: activeTab === 'dashboard'}" href="#" @click="setActiveTab('dashboard')">
+                                    <i class="fas fa-tachometer-alt me-2"></i> Dashboard
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" :class="{active: activeTab === 'expenses'}" href="#" @click="setActiveTab('expenses')">
+                                    <i class="fas fa-wallet me-2"></i> Expense Records
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" :class="{active: activeTab === 'life'}" href="#" @click="setActiveTab('life')">
+                                    <i class="fas fa-book me-2"></i> Life Records
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" :class="{active: activeTab === 'health'}" href="#" @click="setActiveTab('health')">
+                                    <i class="fas fa-heartbeat me-2"></i> Health Info
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" :class="{active: activeTab === 'calories'}" href="#" @click="setActiveTab('calories')">
+                                    <i class="fas fa-apple-alt me-2"></i> Calorie Records
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <!-- Main content -->
+                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                    <div class="pt-3 pb-2 mb-3">
+                        <transition name="fade" mode="out-in">
+                            <!-- Dashboard -->
+                            <div v-if="activeTab === 'dashboard'" key="dashboard">
+                                <dashboard-component></dashboard-component>
+                            </div>
+
+                            <!-- Expense Records -->
+                            <div v-else-if="activeTab === 'expenses'" key="expenses">
+                                <expense-records-component></expense-records-component>
+                            </div>
+
+                            <!-- Life Records -->
+                            <div v-else-if="activeTab === 'life'" key="life">
+                                <life-records-component></life-records-component>
+                            </div>
+
+                            <!-- Health Info -->
+                            <div v-else-if="activeTab === 'health'" key="health">
+                                <health-info-component></health-info-component>
+                            </div>
+
+                            <!-- Calorie Records -->
+                            <div v-else-if="activeTab === 'calories'" key="calories">
+                                <calorie-records-component></calorie-records-component>
+                            </div>
+                        </transition>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/components/dashboard.js"></script>
+    <script src="js/components/expense-records.js"></script>
+    <script src="js/components/life-records.js"></script>
+    <script src="js/components/health-info.js"></script>
+    <script src="js/components/calorie-records.js"></script>
+    <script src="js/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -3,7 +3,6 @@ package org.example.mapper;
 import org.apache.ibatis.annotations.*;
 import org.example.bean.HealthInfo;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Mapper
@@ -45,10 +44,22 @@ public interface HealthInfoMapper {
     /**
      * 查询指定日期之后的健康信息记录
      *
-     * @param dateTime 日期时间
-     * @param status
+     * @param recordDate 记录日期
+     * @param status 状态
      * @return 健康信息记录列表
      */
-    @Select("SELECT * FROM health_info WHERE record_date >= #{dateTime}")
-    List<HealthInfo> list(LocalDateTime dateTime, Integer status);
+    @Select("<script>" +
+            "SELECT * FROM health_info " +
+            "<where>" +
+            "<if test='recordDate != null and recordDate != \"\"'>" +
+            "record_date >= #{recordDate}" +
+            "</if>" +
+            "<if test='status != null'>" +
+            "<if test='recordDate != null and recordDate != \"\"'> AND </if>" +
+            "status = #{status}" +
+            "</if>" +
+            "</where>" +
+            "ORDER BY created_at DESC" +
+            "</script>")
+    List<HealthInfo> list(String recordDate, Integer status);
 }

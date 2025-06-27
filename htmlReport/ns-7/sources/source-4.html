@@ -1,0 +1,131 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > HealthInfoMapper</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.example.mapper</a>
+</div>
+
+<h1>Coverage Summary for Class: HealthInfoMapper (org.example.mapper)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+</tr>
+  <tr>
+    <td class="name">HealthInfoMapper$MockitoMock$L8xpt3PJ</td>
+  </tr>
+  <tr>
+    <td class="name">HealthInfoMapper$MockitoMock$L8xpt3PJ$auxiliary$BfgbHNoK</td>
+  </tr>
+  <tr>
+    <td class="name">HealthInfoMapper$MockitoMock$L8xpt3PJ$auxiliary$tVnC7QFc</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.example.mapper;
+&nbsp;
+&nbsp;import org.apache.ibatis.annotations.*;
+&nbsp;import org.example.bean.HealthInfo;
+&nbsp;
+&nbsp;import java.time.LocalDateTime;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;@Mapper
+&nbsp;public interface HealthInfoMapper {
+&nbsp;
+&nbsp;    /**
+&nbsp;     * 插入健康信息记录
+&nbsp;     * @param healthInfo 健康信息实体
+&nbsp;     * @return 插入成功的记录数
+&nbsp;     */
+&nbsp;    @Insert(&quot;INSERT INTO health_info (description, record_date, status) VALUES (#{description}, #{recordDate}, #{status})&quot;)
+&nbsp;    @Options(useGeneratedKeys = true, keyProperty = &quot;id&quot;, keyColumn = &quot;id&quot;)
+&nbsp;    int insert(HealthInfo healthInfo);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * 根据 ID 删除健康信息记录
+&nbsp;     * @param id 记录 ID
+&nbsp;     * @return 删除成功的记录数
+&nbsp;     */
+&nbsp;    @Delete(&quot;DELETE FROM health_info WHERE id = #{id}&quot;)
+&nbsp;    int deleteById(Integer id);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * 更新健康信息记录
+&nbsp;     * @param healthInfo 健康信息实体
+&nbsp;     * @return 更新成功的记录数
+&nbsp;     */
+&nbsp;    @Update(&quot;UPDATE health_info SET description = #{description}, record_date = #{recordDate}, status = #{status} WHERE id = #{id}&quot;)
+&nbsp;    int update(HealthInfo healthInfo);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * 根据 ID 查询健康信息记录
+&nbsp;     * @param id 记录 ID
+&nbsp;     * @return 健康信息实体
+&nbsp;     */
+&nbsp;    @Select(&quot;SELECT * FROM health_info WHERE id = #{id}&quot;)
+&nbsp;    HealthInfo selectById(Integer id);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * 查询指定日期之后的健康信息记录
+&nbsp;     *
+&nbsp;     * @param dateTime 日期时间
+&nbsp;     * @param status
+&nbsp;     * @return 健康信息记录列表
+&nbsp;     */
+&nbsp;    @Select(&quot;SELECT * FROM health_info WHERE record_date &gt;= #{dateTime}&quot;)
+&nbsp;    List&lt;HealthInfo&gt; list(LocalDateTime dateTime, Integer status);
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-06-27 16:02</div>
+</div>
+</body>
+</html>

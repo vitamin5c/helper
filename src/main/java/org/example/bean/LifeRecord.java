@@ -7,6 +7,7 @@ public class LifeRecord {
     private String title; // 记录标题
     private String content; // 记录内容
     private LocalDateTime createTime; // 记录创建时间
+    private LocalDateTime updateTime; // 记录更新时间
 
     public LifeRecord() {}
 
@@ -47,5 +48,13 @@ public class LifeRecord {
 
     public void setCreateTime(LocalDateTime createTime) {
         this.createTime = createTime;
+    }
+
+    public LocalDateTime getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(LocalDateTime updateTime) {
+        this.updateTime = updateTime;
     }
 }

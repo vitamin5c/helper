@@ -25,7 +25,7 @@ public interface ExpenseRecordMapper {
      * 添加收支记录
      * @param expenseRecord
      */
-    @Insert("INSERT INTO expense_record (amount, category, date_time, description) VALUES (#{amount}, #{category}, #{dateTime}), #{description}")
+    @Insert("INSERT INTO expense_record (amount, category, create_date, description) VALUES (#{amount}, #{category}, #{createDate}, #{description})")
     void add(ExpenseRecord expenseRecord);
 
     /**

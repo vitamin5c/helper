@@ -1,0 +1,147 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > CalorieRecordMapper</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.example.mapper</a>
+</div>
+
+<h1>Coverage Summary for Class: CalorieRecordMapper (org.example.mapper)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+</tr>
+  <tr>
+    <td class="name">CalorieRecordMapper$MockitoMock$CQ0wQ2dz</td>
+  </tr>
+  <tr>
+    <td class="name">CalorieRecordMapper$MockitoMock$CQ0wQ2dz$auxiliary$2bXPQyQT</td>
+  </tr>
+  <tr>
+    <td class="name">CalorieRecordMapper$MockitoMock$CQ0wQ2dz$auxiliary$ZYWyf2GE</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.example.mapper;
+&nbsp;
+&nbsp;import org.apache.ibatis.annotations.*;
+&nbsp;import org.example.bean.CalorieRecord;
+&nbsp;
+&nbsp;import java.time.LocalDate;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;@Mapper
+&nbsp;public interface CalorieRecordMapper {
+&nbsp;
+&nbsp;    /**
+&nbsp;     * 分页查询卡路里记录
+&nbsp;     * @param foodName 食物名称
+&nbsp;     * @param mealType 餐次类型
+&nbsp;     * @param recordDate 记录日期
+&nbsp;     * @return 卡路里记录列表
+&nbsp;     */
+&nbsp;    List&lt;CalorieRecord&gt; list(String foodName, String mealType, LocalDate recordDate);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * 添加卡路里记录
+&nbsp;     * @param calorieRecord 卡路里记录
+&nbsp;     */
+&nbsp;    @Insert(&quot;INSERT INTO calorie_record (food_name, calories, serving_size, meal_type, description, record_date) &quot; +
+&nbsp;            &quot;VALUES (#{foodName}, #{calories}, #{servingSize}, #{mealType}, #{description}, #{recordDate})&quot;)
+&nbsp;    void add(CalorieRecord calorieRecord);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * 根据 ID 删除卡路里记录
+&nbsp;     * @param id 记录ID
+&nbsp;     */
+&nbsp;    @Delete(&quot;DELETE FROM calorie_record WHERE id = #{id}&quot;)
+&nbsp;    void deleteById(Integer id);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * 根据 ID 更新卡路里记录
+&nbsp;     * @param calorieRecord 卡路里记录
+&nbsp;     */
+&nbsp;    @Update(&quot;UPDATE calorie_record SET food_name = #{foodName}, calories = #{calories}, &quot; +
+&nbsp;            &quot;serving_size = #{servingSize}, meal_type = #{mealType}, description = #{description}, &quot; +
+&nbsp;            &quot;record_date = #{recordDate} WHERE id = #{id}&quot;)
+&nbsp;    void updateById(CalorieRecord calorieRecord);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * 根据 ID 查询卡路里记录
+&nbsp;     * @param id 记录ID
+&nbsp;     * @return 卡路里记录
+&nbsp;     */
+&nbsp;    @Select(&quot;SELECT * FROM calorie_record WHERE id = #{id}&quot;)
+&nbsp;    CalorieRecord getById(Integer id);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * 根据日期范围统计总卡路里
+&nbsp;     * @param startDate 开始日期
+&nbsp;     * @param endDate 结束日期
+&nbsp;     * @return 总卡路里
+&nbsp;     */
+&nbsp;    @Select(&quot;SELECT COALESCE(SUM(calories), 0) FROM calorie_record WHERE record_date BETWEEN #{startDate} AND #{endDate}&quot;)
+&nbsp;    Double getTotalCaloriesByDateRange(LocalDate startDate, LocalDate endDate);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * 根据餐次类型和日期统计卡路里
+&nbsp;     * @param mealType 餐次类型
+&nbsp;     * @param recordDate 记录日期
+&nbsp;     * @return 卡路里总数
+&nbsp;     */
+&nbsp;    @Select(&quot;SELECT COALESCE(SUM(calories), 0) FROM calorie_record WHERE meal_type = #{mealType} AND record_date = #{recordDate}&quot;)
+&nbsp;    Double getCaloriesByMealTypeAndDate(String mealType, LocalDate recordDate);
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-06-27 16:02</div>
+</div>
+</body>
+</html>

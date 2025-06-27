@@ -71,6 +71,38 @@ public class CalorieRecordController {
     }
 
     /**
+     * 获取卡路里统计分析数据
+     * @return 统计分析数据
+     */
+    @GetMapping("/analytics")
+    public Result getAnalytics() {
+        // 获取今日卡路里
+        LocalDate today = LocalDate.now();
+        Double todayCalories = calorieRecordService.getTotalCaloriesByDateRange(today, today);
+        
+        // 获取本周卡路里
+        LocalDate weekStart = today.minusDays(today.getDayOfWeek().getValue() - 1);
+        Double weekCalories = calorieRecordService.getTotalCaloriesByDateRange(weekStart, today);
+        
+        // 获取本月卡路里
+        LocalDate monthStart = today.withDayOfMonth(1);
+        Double monthCalories = calorieRecordService.getTotalCaloriesByDateRange(monthStart, today);
+        
+        // 计算日均卡路里（基于本月数据）
+        int daysInMonth = today.getDayOfMonth();
+        Double dailyAverage = monthCalories != null ? monthCalories / daysInMonth : 0.0;
+        
+        // 构建返回数据
+        java.util.Map<String, Object> analytics = new java.util.HashMap<>();
+        analytics.put("todayCalories", todayCalories != null ? todayCalories : 0.0);
+        analytics.put("weekCalories", weekCalories != null ? weekCalories : 0.0);
+        analytics.put("monthCalories", monthCalories != null ? monthCalories : 0.0);
+        analytics.put("dailyAverage", dailyAverage);
+        
+        return Result.success(analytics);
+    }
+
+    /**
      * 根据ID查询卡路里记录
      * @param id 记录ID
      * @return 卡路里记录

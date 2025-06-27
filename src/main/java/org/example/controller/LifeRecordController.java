@@ -22,20 +22,22 @@ public class LifeRecordController {
         return Result.success(pageResult);
     }
 
-    @RequestMapping("/add")
+    @PostMapping
     public Result add(@RequestBody LifeRecord lifeRecord) {
+        lifeRecord.setCreateTime(LocalDateTime.now());
         lifeRecordService.add(lifeRecord);
         return Result.success();
     }
 
-    @RequestMapping("/delete")
-    public Result delete(Integer id) {
+    @DeleteMapping("/{id}")
+    public Result delete(@PathVariable Integer id) {
         lifeRecordService.deleteById(id);
         return Result.success();
     }
 
-    @RequestMapping("/update")
+    @PutMapping
     public Result update(@RequestBody LifeRecord lifeRecord) {
+        lifeRecord.setUpdateTime(LocalDateTime.now());
         lifeRecordService.update(lifeRecord);
         return Result.success();
     }

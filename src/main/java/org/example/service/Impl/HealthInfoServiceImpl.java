@@ -9,7 +9,6 @@ import org.example.service.HealthInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -39,12 +38,12 @@ public class HealthInfoServiceImpl implements HealthInfoService {
     }
 
     @Override
-    public PageResult<HealthInfo> page(LocalDateTime dateTime, Integer status, Integer page, Integer pageSize) {
-        //1. 设置分页参数
+    public PageResult<HealthInfo> page(String recordDate, Integer status, Integer page, Integer pageSize) {
+        // 设置分页参数
         PageHelper.startPage(page, pageSize);
 
-        //2. 执行查询
-        List<HealthInfo>  healthInfosList = healthInfoMapper.list(dateTime, status);
+        // 执行查询
+        List<HealthInfo>  healthInfosList = healthInfoMapper.list(recordDate, status);
         Page<HealthInfo> p = (Page<HealthInfo>) healthInfosList;
 
         //3. 封装结果

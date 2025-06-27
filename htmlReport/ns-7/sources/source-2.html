@@ -1,0 +1,130 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > ExpenseRecordMapper</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.example.mapper</a>
+</div>
+
+<h1>Coverage Summary for Class: ExpenseRecordMapper (org.example.mapper)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+</tr>
+  <tr>
+    <td class="name">ExpenseRecordMapper$MockitoMock$51LtM9tI</td>
+  </tr>
+  <tr>
+    <td class="name">ExpenseRecordMapper$MockitoMock$51LtM9tI$auxiliary$3qAZtxDH</td>
+  </tr>
+  <tr>
+    <td class="name">ExpenseRecordMapper$MockitoMock$51LtM9tI$auxiliary$XL6X1vMW</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.example.mapper;
+&nbsp;
+&nbsp;import org.apache.ibatis.annotations.*;
+&nbsp;import org.example.bean.ExpenseRecord;
+&nbsp;
+&nbsp;import java.time.LocalDate;
+&nbsp;import java.time.LocalDateTime;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;@Mapper
+&nbsp;public interface ExpenseRecordMapper {
+&nbsp;
+&nbsp;    /**
+&nbsp;     * 分页查询收支记录
+&nbsp;     * @param maxAmount
+&nbsp;     * @param minAmount
+&nbsp;     * @param category
+&nbsp;     * @param dateTime
+&nbsp;     * @return
+&nbsp;     */
+&nbsp;
+&nbsp;    List&lt;ExpenseRecord&gt; list(Integer maxAmount, Integer minAmount, String category, LocalDate dateTime);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * 添加收支记录
+&nbsp;     * @param expenseRecord
+&nbsp;     */
+&nbsp;    @Insert(&quot;INSERT INTO expense_record (amount, category, date_time, description) VALUES (#{amount}, #{category}, #{dateTime}), #{description}&quot;)
+&nbsp;    void add(ExpenseRecord expenseRecord);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * 根据 ID 删除收支记录
+&nbsp;     * @param id
+&nbsp;     */
+&nbsp;    @Delete(&quot;DELETE FROM expense_record WHERE id = #{id}&quot;)
+&nbsp;    void deleteById(Integer id);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * 根据 ID 更新收支记录
+&nbsp;     * @param expenseRecord
+&nbsp;     */
+&nbsp;    @Update(&quot;UPDATE expense_record SET description = #{description}, amount = #{amount}, category = #{category} WHERE id = #{id}&quot;)
+&nbsp;    void updateById(ExpenseRecord expenseRecord);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * 根据 ID 查询收支记录
+&nbsp;     * @param id
+&nbsp;     * @return
+&nbsp;     */
+&nbsp;    @Select(&quot;SELECT * FROM expense_record WHERE id = #{id}&quot;)
+&nbsp;    ExpenseRecord getById(Integer id);
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-06-27 16:02</div>
+</div>
+</body>
+</html>

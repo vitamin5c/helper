@@ -1,0 +1,131 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > CalorieRecordService</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.example.service</a>
+</div>
+
+<h1>Coverage Summary for Class: CalorieRecordService (org.example.service)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">CalorieRecordService</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.example.service;
+&nbsp;
+&nbsp;import org.example.bean.CalorieRecord;
+&nbsp;import org.example.bean.PageResult;
+&nbsp;import org.springframework.stereotype.Service;
+&nbsp;
+&nbsp;import java.time.LocalDate;
+&nbsp;
+&nbsp;@Service
+&nbsp;public interface CalorieRecordService {
+&nbsp;    
+&nbsp;    /**
+&nbsp;     * 分页查询卡路里记录
+&nbsp;     * @param foodName 食物名称
+&nbsp;     * @param mealType 餐次类型
+&nbsp;     * @param recordDate 记录日期
+&nbsp;     * @param page 页码
+&nbsp;     * @param pageSize 每页记录数
+&nbsp;     * @return 分页结果
+&nbsp;     */
+&nbsp;    PageResult&lt;CalorieRecord&gt; page(String foodName, String mealType, LocalDate recordDate, Integer page, Integer pageSize);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * 添加卡路里记录
+&nbsp;     * @param calorieRecord 卡路里记录
+&nbsp;     */
+&nbsp;    void add(CalorieRecord calorieRecord);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * 根据ID删除卡路里记录
+&nbsp;     * @param id 记录ID
+&nbsp;     */
+&nbsp;    void deleteById(Integer id);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * 更新卡路里记录
+&nbsp;     * @param calorieRecord 卡路里记录
+&nbsp;     */
+&nbsp;    void update(CalorieRecord calorieRecord);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * 根据ID查询卡路里记录
+&nbsp;     * @param id 记录ID
+&nbsp;     * @return 卡路里记录
+&nbsp;     */
+&nbsp;    CalorieRecord getById(Integer id);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * 根据日期范围统计总卡路里
+&nbsp;     * @param startDate 开始日期
+&nbsp;     * @param endDate 结束日期
+&nbsp;     * @return 总卡路里
+&nbsp;     */
+&nbsp;    Double getTotalCaloriesByDateRange(LocalDate startDate, LocalDate endDate);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * 根据餐次类型和日期统计卡路里
+&nbsp;     * @param mealType 餐次类型
+&nbsp;     * @param recordDate 记录日期
+&nbsp;     * @return 卡路里总数
+&nbsp;     */
+&nbsp;    Double getCaloriesByMealTypeAndDate(String mealType, LocalDate recordDate);
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-06-27 16:02</div>
+</div>
+</body>
+</html>

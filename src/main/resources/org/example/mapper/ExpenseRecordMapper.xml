@@ -13,7 +13,7 @@
                 and category = #{category}
             </if>
             <if test="dateTime!= null and dateTime!= ''">
-                and date_time = #{dateTime}
+                and create_date = #{dateTime}
             </if>
             <if test="maxAmount!= null and minAmount!= null">
                 and amount between #{minAmount} and #{maxAmount}

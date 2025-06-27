@@ -1,0 +1,125 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > LifeRecordMapper</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.example.mapper</a>
+</div>
+
+<h1>Coverage Summary for Class: LifeRecordMapper (org.example.mapper)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+</tr>
+  <tr>
+    <td class="name">LifeRecordMapper$MockitoMock$6hmdyOoF</td>
+  </tr>
+  <tr>
+    <td class="name">LifeRecordMapper$MockitoMock$6hmdyOoF$auxiliary$9ZhT6YDq</td>
+  </tr>
+  <tr>
+    <td class="name">LifeRecordMapper$MockitoMock$6hmdyOoF$auxiliary$SG9IKdvD</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.example.mapper;
+&nbsp;
+&nbsp;import org.apache.ibatis.annotations.*;
+&nbsp;import org.example.bean.LifeRecord;
+&nbsp;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;@Mapper
+&nbsp;public interface LifeRecordMapper {
+&nbsp;
+&nbsp;    /**
+&nbsp;     * 分页查询
+&nbsp;     * @param title 标题
+&nbsp;     * @return 分页结果
+&nbsp;     */
+&nbsp;    @Select(&quot;SELECT * FROM life_record WHERE title LIKE CONCAT(&#39;%&#39;, #{title}, &#39;%&#39;)&quot;)
+&nbsp;    List&lt;LifeRecord&gt; list(String title);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * 新增
+&nbsp;     * @param healthInfo 健康信息
+&nbsp;     */
+&nbsp;    @Insert(&quot;INSERT INTO life_record (title, content, create_time) VALUES (#{title}, #{content}, #{createTime})&quot;)
+&nbsp;    void insert(LifeRecord healthInfo);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * 根据 ID 删除
+&nbsp;     * @param id ID
+&nbsp;     */
+&nbsp;    @Delete(&quot;DELETE FROM life_record WHERE id = #{id}&quot;)
+&nbsp;    void deleteById(Integer id);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * 根据 ID 查询
+&nbsp;     *
+&nbsp;     * @param id ID
+&nbsp;     * @return 健康信息
+&nbsp;     */
+&nbsp;    @Select(&quot;SELECT * FROM life_record WHERE id = #{id}&quot;)
+&nbsp;    LifeRecord selectById(Integer id);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * 更新
+&nbsp;     * @param lifeRecord 记录生活
+&nbsp;     */
+&nbsp;    @Update(&quot;UPDATE life_record SET title = #{title}, content = #{content}, update_time = #{updateTime} WHERE id = #{id}&quot;)
+&nbsp;    void update(LifeRecord lifeRecord);
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-06-27 16:02</div>
+</div>
+</body>
+</html>

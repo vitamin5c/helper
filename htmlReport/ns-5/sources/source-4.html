@@ -1,0 +1,161 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > LifeRecordServiceImpl</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.example.service.Impl</a>
+</div>
+
+<h1>Coverage Summary for Class: LifeRecordServiceImpl (org.example.service.Impl)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">LifeRecordServiceImpl</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (6/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (12/12)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.example.service.Impl;
+&nbsp;
+&nbsp;import com.github.pagehelper.Page;
+&nbsp;import com.github.pagehelper.PageHelper;
+&nbsp;import org.example.bean.LifeRecord;
+&nbsp;import org.example.bean.PageResult;
+&nbsp;import org.example.mapper.LifeRecordMapper;
+&nbsp;import org.example.service.LifeRecordService;
+&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+&nbsp;import org.springframework.stereotype.Service;
+&nbsp;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;@Service
+<b class="fc">&nbsp;public class LifeRecordServiceImpl implements LifeRecordService {</b>
+&nbsp;
+&nbsp;    @Autowired
+&nbsp;    private LifeRecordMapper lifeRecordMapper;
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public PageResult&lt;LifeRecord&gt; page(String title, Integer page, Integer pageSize) {
+&nbsp;        //1. 设置分页参数
+<b class="fc">&nbsp;        PageHelper.startPage(page, pageSize);</b>
+&nbsp;
+&nbsp;        //2. 执行查询
+<b class="fc">&nbsp;        List&lt;LifeRecord&gt; lifeRecordsList = lifeRecordMapper.list(title);</b>
+<b class="fc">&nbsp;        Page&lt;LifeRecord&gt; p = (Page&lt;LifeRecord&gt;) lifeRecordsList;</b>
+&nbsp;
+&nbsp;        //3. 封装结果
+<b class="fc">&nbsp;        PageResult&lt;LifeRecord&gt; pageResult = new PageResult&lt;&gt;();</b>
+<b class="fc">&nbsp;        pageResult.setTotal(p.getTotal());</b>
+<b class="fc">&nbsp;        pageResult.setRows(p.getResult());</b>
+<b class="fc">&nbsp;        return pageResult;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void add(LifeRecord lifeRecord) {
+<b class="fc">&nbsp;        lifeRecordMapper.insert(lifeRecord);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void deleteById(Integer id) {
+<b class="fc">&nbsp;        lifeRecordMapper.deleteById(id);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void update(LifeRecord lifeRecord) {
+<b class="fc">&nbsp;        lifeRecordMapper.update(lifeRecord);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public LifeRecord getById(Integer id) {
+<b class="fc">&nbsp;        return lifeRecordMapper.selectById(id);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-06-27 16:02</div>
+</div>
+</body>
+</html>
